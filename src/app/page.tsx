@@ -29,7 +29,8 @@ export default function Home() {
       navigator.mediaDevices
         .getUserMedia({
           video: {
-            deviceId: selectedCamera.deviceId
+            deviceId: selectedCamera.deviceId,
+            facingMode: { ideal: "environment" } // This is the key line for accessing the rear camera
           }
         })
         .then((stream) => {
