@@ -48,9 +48,8 @@ export default function Home() {
   return (
     <div>
       <video ref={videoRef} autoPlay playsInline />
-      {cameraList.length > 1 && (
-        <button onClick={switchCamera}>Switch Camera</button>
-      )}
+
+      <button onClick={switchCamera} className="border-2 p-2">Switch Camera</button>
     </div>
   );
 }
