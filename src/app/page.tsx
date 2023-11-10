@@ -30,7 +30,7 @@ export default function Home() {
         .getUserMedia({
           video: {
             deviceId: selectedCamera.deviceId,
-            facingMode: { ideal: "environment" } // This is the key line for accessing the rear camera
+            facingMode: "user" // "user" for front camera, "environment" for rear camera
           }
         })
         .then((stream) => {
@@ -58,7 +58,7 @@ export default function Home() {
 
       <p className="ml-2">{cameraList.length}</p>
 
-      <div>{deviceList.map((item: any, i: number) => <p key={i}>{item.kind}</p>)}</div>
-    </div>
+      <div>{deviceList.map((item: any, i: number) => <div key={i}><p>{item.kind} - {item.label}</p></div>)}</div>
+    </div >
   );
 }
