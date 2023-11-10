@@ -10,6 +10,8 @@ export default function Home() {
   useEffect(() => {
     // Отримати список доступних камер під час завантаження компонента
     navigator.mediaDevices.enumerateDevices().then((devices) => {
+      console.log(devices);
+      
       const cameras: any = devices.filter((device) => device.kind === "videoinput");
       setCameraList(cameras);
       // Вибрати першу камеру як обрану за замовчуванням
@@ -50,6 +52,8 @@ export default function Home() {
       <video ref={videoRef} autoPlay playsInline />
 
       <button onClick={switchCamera} className="border-2 p-2">Switch Camera</button>
+
+      <p className="ml-2">{cameraList.length}</p>
     </div>
   );
 }
