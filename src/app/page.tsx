@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 export default function Home() {
   const [cameraList, setCameraList] = useState<any>([]);
+  const [deviceList, setDeviceList] = useState<any>([]);
   const [selectedCamera, setSelectedCamera] = useState<any>(null);
   const videoRef = useRef<any>();
 
@@ -11,7 +12,8 @@ export default function Home() {
     // Отримати список доступних камер під час завантаження компонента
     navigator.mediaDevices.enumerateDevices().then((devices) => {
       console.log(devices);
-      
+      setDeviceList(devices);
+
       const cameras: any = devices.filter((device) => device.kind === "videoinput");
       setCameraList(cameras);
       // Вибрати першу камеру як обрану за замовчуванням
@@ -54,6 +56,8 @@ export default function Home() {
       <button onClick={switchCamera} className="border-2 p-2">Switch Camera</button>
 
       <p className="ml-2">{cameraList.length}</p>
+
+      <div>{deviceList.map((item: any, i: number) => <p key={i}>{item.kind}</p>)}</div>
     </div>
   );
 }
